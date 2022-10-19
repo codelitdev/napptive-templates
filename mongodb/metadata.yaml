@@ -1,0 +1,16 @@
+apiVersion: core.napptive.com/v1alpha1
+kind: ApplicationMetadata
+name: "MongoDB"
+version: 0.1.0 
+description: MongoDB database
+keywords:
+  - "mongo"
+  - "mongodb"
+  - "nosql" 
+license: "MIT"
+url: "https://www.mongodb.com"
+doc: "https://hub.docker.com/_/mongo"
+logo:
+  - src: "https://webimages.mongodb.com/_com_assets/cms/kusb9stg1ndrp7j53-MongoDBLogoBrand1.png?auto=format%252Ccompress"
+    type: "image/png"
+    size: "120x120"

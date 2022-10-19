@@ -1,0 +1,37 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: mongodb
+  annotations:
+    version: v0.1.0
+    description: "MongoDB"
+spec:
+  components:
+    - name: mongodb
+      type: webservice
+      properties:
+        image: mongo:latest
+        ports:
+        - port: 27017
+          expose: true
+        env:
+          - name: MONGO_INITDB_ROOT_USERNAME 
+            value: "root"
+          - name: MONGO_INITDB_ROOT_PASSWORD 
+            value: "root"
+      traits:
+        - type: storage
+          properties:
+            pvc:
+              - name: mongodata
+                accessModes:
+                - ReadWriteOnce
+                mountPath: /data/db
+                resources:
+                  requests:
+                    storage: 256Mi
+policies:
+  - name: mongodb-health
+    type: health
+    properties:
+      probeInterval: 5
